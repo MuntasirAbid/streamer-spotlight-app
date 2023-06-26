@@ -34,28 +34,25 @@ const StreamerList = () => {
   <div>
    <h1>Streamer List</h1>
    <Link to="/"><button>Go to Add new streamers</button></Link>
-   <ul>
-    {streamers.map((streamer) => (
-
-     <li key={streamer._id}>
-
-      <h3>{streamer.name}</h3>
-      <p>{streamer.description}</p>
-      <p>Platform: {streamer.platform}</p>
-      <button onClick={() => handleVote(streamer._id, 'upvote')}>
-       Upvote
-      </button>
-      <span>{streamer.upvotes}</span>
-      <button onClick={() => handleVote(streamer._id, 'downvote')}>
-       Downvote
-      </button>
-      <span>{streamer.downvotes}</span>
-      <br></br>
-      <Link to={`/streamers/details/${streamer._id}`}><button>See Details</button></Link>
-     </li>
-    ))}
-
-   </ul>
+   {streamers.length === 0 ? (
+    <p>No streamers added yet</p>
+   ) : (
+    <ul>
+     {streamers.map((streamer) => (
+      <li key={streamer._id}>
+       <h3>{streamer.name}</h3>
+       <p>{streamer.description}</p>
+       <p>Platform: {streamer.platform}</p>
+       <button onClick={() => handleVote(streamer._id, 'upvote')}>Upvote</button>
+       <span>{streamer.upvotes}</span>
+       <button onClick={() => handleVote(streamer._id, 'downvote')}>Downvote</button>
+       <span>{streamer.downvotes}</span>
+       <br />
+       <Link to={`/streamers/details/${streamer._id}`}><button>See Details</button></Link>
+      </li>
+     ))}
+    </ul>
+   )}
   </div>
  );
 };

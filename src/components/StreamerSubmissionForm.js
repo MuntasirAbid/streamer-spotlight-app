@@ -14,6 +14,7 @@ const StreamerSubmissionForm = () => {
   try {
    await axios.post('http://localhost:10000/streamers', streamer);
    setStreamer({ name: '', description: '', platform: 'Twitch' });
+   window.alert('Streamer added successfully');
   } catch (error) {
    console.error('Error adding streamer:', error);
   }

@@ -1,35 +1,18 @@
-import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import axios from 'axios';
 
 const StreamersDetails = () => {
- const srteamersData = useLoaderData()
 
- console.log(srteamersData);
-
- const [streamer, setStreamer] = useState(null);
-
- // useEffect(() => {
- //  fetchStreamer();
- // }, []);
-
- // const fetchStreamer = async () => {
- //  try {
- //   const response = await axios.get(`http://localhost:10000/streamers/${streamerId}`);
- //   setStreamer(response.data);
- //  } catch (error) {
- //   console.error('Error fetching streamer:', error);
- //  }
- // };
+ const streamersData = useLoaderData()
 
  return (
   <div>
-   {srteamersData ? (
+   {streamersData ? (
     <>
      <h1>Streamer Details</h1>
-     <h3>{srteamersData.name}</h3>
-     <p>{srteamersData.description}</p>
-     <p>Platform: {srteamersData.platform}</p>
+     <h3>Name: {streamersData.name}</h3>
+     <p>Details: {streamersData.description}</p>
+     <p>Platform: {streamersData.platform}</p>
+     <p>Upvotes: {streamersData.upvotes}, Downvotes: {streamersData.downvotes}</p>
      <img
       src="https://static-cdn.jtvnw.net/jtv_user_pictures/asmongold-profile_image-f7ddcbd0332f5d28-300x300.png"
       alt="Streamer"
