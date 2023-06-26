@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const StreamerList = () => {
- const { streamerId } = useParams()
+
  const [streamers, setStreamers] = useState([]);
 
  useEffect(() => {
@@ -39,10 +39,9 @@ const StreamerList = () => {
 
      <li key={streamer._id}>
 
-      <h3> <Link to={`/streamers/${streamerId}`}>{streamer.name}</Link></h3>
+      <h3>{streamer.name}</h3>
       <p>{streamer.description}</p>
       <p>Platform: {streamer.platform}</p>
-
       <button onClick={() => handleVote(streamer._id, 'upvote')}>
        Upvote
       </button>
@@ -51,8 +50,11 @@ const StreamerList = () => {
        Downvote
       </button>
       <span>{streamer.downvotes}</span>
+      <br></br>
+      <Link to={`/streamers/details/${streamer._id}`}><button>See Details</button></Link>
      </li>
     ))}
+
    </ul>
   </div>
  );
