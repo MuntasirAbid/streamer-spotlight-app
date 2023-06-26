@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const StreamersDetails = () => {
 
@@ -6,7 +6,12 @@ const StreamersDetails = () => {
 
  return (
   <div>
+   <>
+    <Link to="/"><button>Go to main page</button></Link>
+    <Link to='/streamers'><button>All Streamer's List</button></Link>
+   </>
    {streamersData ? (
+
     <>
      <h1>Streamer Details</h1>
      <h3>Name: {streamersData.name}</h3>
